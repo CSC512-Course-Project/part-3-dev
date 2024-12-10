@@ -28,4 +28,4 @@ add_library(BranchAnalysisPass MODULE part1/BranchPass.cpp)
 
 # Link the LLVM libraries with your passes
 target_link_libraries(SeminalInputFeaturesAnalysis PRIVATE LLVM)
-target_link_libraries(BranchAnalysisPass PRIVATE LLVM)
+target_link_libraries(BranchPass PRIVATE LLVM)

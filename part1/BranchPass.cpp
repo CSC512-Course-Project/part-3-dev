@@ -198,7 +198,7 @@ llvm::PassPluginLibraryInfo getBranchAnalysisPluginInfo()
             builder.registerPipelineParsingCallback(
                 [](StringRef passName, FunctionPassManager &fpm, ArrayRef<PassBuilder::PipelineElement>)
                 {
-                  if (passName == "BranchAnalysisPass")
+                  if (passName == "branch-analysis-pass")
                   {
                     fpm.addPass(BranchAnalysisPass());
                     return true;
