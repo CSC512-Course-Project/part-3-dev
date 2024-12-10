@@ -1,11 +1,11 @@
 rm -r build
+rm -r IR_Outputs
 mkdir build
+mkdir IR_Outputs
 cd build
 cmake ..
 make
 cd ..
-
-
 
 echo "file_path,branch_id,source_line,destination_line" > branch_data.csv
 
