@@ -24,7 +24,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
 # Define the LLVM passes
 add_library(SeminalInputFeaturesAnalysis MODULE part2/SeminalInputFeaturesAnalysis.cpp)
-add_library(BranchAnalysisPass MODULE part1/BranchPass.cpp)
+add_library(BranchPass MODULE part1/BranchPass.cpp)
 
 # Link the LLVM libraries with your passes
 target_link_libraries(SeminalInputFeaturesAnalysis PRIVATE LLVM)
