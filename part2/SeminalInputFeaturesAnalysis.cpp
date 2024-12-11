@@ -2,7 +2,7 @@
  * @file SeminalInputFeaturesAnalysis.cpp
  * @brief This file contains the implementation of the SeminalInputFeaturesAnalysis pass
  * @author Srinath Srinivasan (ssrini27@ncsu.edu)
- * @bug No known bugs
+ * @bug Sometimes the analysis may not be accurate due to limitations in the def-use analysis/loop analysis
  * @attention Please make sure FILE_NAME is set to the correct file path before running the pass
  *
  * This file contains the implementation of the SeminalInputFeaturesAnalysis pass.
@@ -17,20 +17,11 @@
 #include <vector>
 #include <map>
 #include <set>
-#include <sstream>
 #include <fstream>
 
 #include "llvm/IR/Module.h"
-#include "llvm/IR/Function.h"
-#include "llvm/IR/BasicBlock.h"
-#include "llvm/IR/Instruction.h"
-#include "llvm/IR/Instructions.h"
-#include "llvm/IR/DebugInfo.h"
-#include "llvm/IR/DebugInfoMetadata.h"
 #include "llvm/Passes/PassBuilder.h"
 #include "llvm/Passes/PassPlugin.h"
-#include "llvm/Support/raw_ostream.h"
-#include "llvm/Analysis/LoopInfo.h"
 #include "llvm/Analysis/LoopAnalysisManager.h"
 
 using namespace llvm;
@@ -187,7 +178,7 @@ namespace
         std::map<Value *, std::set<Instruction *>> dependentInstructions;
         std::vector<BranchInst *> branches;
         std::map<Value *, std::string> calledFunc;
-        std::vector<std::string> libraryFunctions = {"getc", "fopen", "scanf", "fclose", "fread", "fwrite"};
+        std::vector<std::string> libraryFunctions = {"getc", "fopen", "scanf", "fclose", "fread", "fwrite", "fprintf", "fscanf", "sprintf", "sscanf", "fgetc", "fgets", "fputc", "fputs", "getc", "getchar", "gets", "get_s", "getwc", "fgetwc", "fputwc", "fputws", "putwc", "putwchar", "ungetwc", "vfprintf", "vfscanf", "vprintf", "vscanf", "vsprintf", "vsscanf", "vsnprintf", "vsprintf", "vsscanf", "vswprintf", "vwprintf", "wprintf", "wscanf"};
 
         std::string FILE_NAME = "analysis_output.txt";
 
@@ -416,6 +407,7 @@ namespace
                                 Value *Operand = Cmp->getOperand(i);
 
                                 std::string operandName = variables[Operand];
+                                outs() << "Operand Name: " << operandName << "\n";
 
                                 variablesInLine[operandName].insert(std::to_string(Cmp->getDebugLoc()->getLine()));
                             }
