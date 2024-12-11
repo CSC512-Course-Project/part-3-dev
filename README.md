@@ -14,7 +14,7 @@ The second tool has branch pointer tracing built into it. The first pass generat
 
 #### Testing:
 
-2 simple and 3 complex (>200 LOC) test files are located in the tests folder
+2 simple and 3 complex (>200 LOC) test files are located in the tests folder. To test them please use these commands:
 1. (Simple) file_copy.c - `bash clean_build.sh file_copy`
 2. (Simple) merge_two.c - `bash clean_build.sh merge_two`
 3. (Non-trivial) file_manupulation.c - `bash clean_build.sh file_manupulation`
