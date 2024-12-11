@@ -407,7 +407,6 @@ namespace
                                 Value *Operand = Cmp->getOperand(i);
 
                                 std::string operandName = variables[Operand];
-                                outs() << "Operand Name: " << operandName << "\n";
 
                                 variablesInLine[operandName].insert(std::to_string(Cmp->getDebugLoc()->getLine()));
                             }
