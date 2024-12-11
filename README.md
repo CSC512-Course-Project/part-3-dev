@@ -1,5 +1,3 @@
-# part-3-dev
- 
 # CSC512 Course Project (Part-3-dev)
 This project consists of 2 passes. First tool to trace branch-pointer operations. The second tool to extract seminal input features from C code using LLVM.
 
